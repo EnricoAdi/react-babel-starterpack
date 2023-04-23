@@ -1,26 +1,31 @@
-const {useState, useContext, createContext} = React;     
-const {Link, Route, Redirect, HashRouter,BrowserRouter, Switch, useHistory} = window.ReactRouterDOM; 
-const withRouter = ReactRouterDOM.withRouter; 
-const App = ()=> {  
+ 
+const App = ()=> {   
+    
+    const [dataContext, setDataContext] = useState({
+        name: 'John',
+        age: 30
+    })  
     return (
-        <div>
+        <MainContext.Provider value={{dataContext,setDataContext}}>
             <HashRouter>
             Link: <Link to="/register">Register</Link> | <Link to="/login">Login</Link> | <Link to="/">Home</Link>
               
                <Switch>
                     <Route exact path="/register">
-                        <div> Halaman register</div>
+                        <Coba/>
                     </Route>
                     <Route exact path="/login">
-                        <div> Halaman login</div>
+                        <Coba2/>
                     </Route>
                     <Route exact path="/">
                         <div> Halaman home</div>
                     </Route>
                 </Switch>
             </HashRouter>  
-        </div>
+        </MainContext.Provider>
     )
 }
+
+
 ReactDOM.render(<App/>,document.getElementById("root"));
  
